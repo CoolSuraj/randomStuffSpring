@@ -87,5 +87,14 @@ public class DictonaryAPIController {
 		return ResponseEntity.ok(li);
 
 	}
+	
+	@GetMapping("/dictonary/simple/{word}")
+	public ResponseEntity<List<Result>> getSimpleMeaning(@PathVariable String word){
+		
+		ArrayList<Result> results  = restTemplate.getForObject(dictonaryApiAddress + "/" + word, ArrayList.class);
+		
+		System.out.println(results.get(0));
+		return ResponseEntity.ok(results);
+	}
 
 }
