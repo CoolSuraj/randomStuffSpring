@@ -1,17 +1,5 @@
 package com.random.stuff.suraj.randomStuffAPI.dictonary;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -20,17 +8,27 @@ import com.random.stuff.suraj.randomStuffAPI.pojo.Defination;
 import com.random.stuff.suraj.randomStuffAPI.pojo.Meaning;
 import com.random.stuff.suraj.randomStuffAPI.pojo.Phonetic;
 import com.random.stuff.suraj.randomStuffAPI.pojo.Result;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController("/")
 public class DictonaryAPIController {
 
-	@Value("${dictonary.api.address}")
+	@Value("${dictionary.api.address}")
 	private String dictonaryApiAddress;
 
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@GetMapping("/dictonary/{word}")
+	@GetMapping("/dictionary/{word}")
 	public ResponseEntity<List<Result>> getMeaning(@PathVariable String word)
 			throws JsonMappingException, JsonProcessingException {
 
